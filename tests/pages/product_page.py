@@ -20,3 +20,12 @@ class ProductPage(BasePage):
     def check_text_inside_alert(self, name, price):
         assert name == self.text_inside_element(*ProductPageLocators.PRODUCT_NAME_INSIDE_MESSAGE)
         assert price == self.text_inside_element(*ProductPageLocators.PRODUCT_PRICE_INSIDE_MESSAGE)
+
+    def should_not_be_success_message(self):
+        """Success message is presented, but should not be"""
+        assert self.is_not_element_present(*ProductPageLocators.PRODUCT_PRICE_ALERT_MESSAGE)
+
+    def should_element_disappear(self):
+        assert self.is_disappeared(*ProductPageLocators.PRODUCT_PRICE_ALERT_MESSAGE)
+
+
